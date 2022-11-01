@@ -5,43 +5,64 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding:const EdgeInsets.symmetric(horizontal: 50 , vertical: 100),
-
-      color: Colors.lightBlueAccent,
-      child: Column(
+    return Scaffold(
+      backgroundColor: Colors.lightBlueAccent,
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        backgroundColor: Colors.lightBlueAccent,
+        child: Icon(Icons.add,
+        color: Colors.white,
+        size: 40),
+      ),
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children:  [
-          CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 30.0,
-            child: Icon(
-              size: 30.0,
-              color: Colors.lightBlueAccent,
-              Icons.list
-            ),
-          ),
-          SizedBox(
-            height: 30.0,
-          ),
-          Text(
-            'Todoey',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 50.0,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          Text('12 tasks',
-            style: TextStyle(
-                fontSize: 20,
-            color: Colors.white
-            ),
-          ),
+        children: [
           Container(
-          color: Colors.white,
+            padding:const EdgeInsets.symmetric(horizontal: 50 , vertical: 100),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children:  [
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 30.0,
+                  child: Icon(
+                    size: 30.0,
+                    color: Colors.lightBlueAccent,
+                    Icons.list
+                  ),
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                Text(
+                  'Todoey',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 50.0,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text('12 tasks',
+                  style: TextStyle(
+                      fontSize: 20,
+                  color: Colors.white
+                  ),
+                ),
 
-          )
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only( 
+                topRight: Radius.circular(30.0),
+              topLeft: Radius.circular(30.0))
+            ),
+            ),
+          ),
         ],
       ),
     );
