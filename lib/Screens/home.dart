@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:todoey/Widgets/tasklistview.dart';
+import 'package:todoey/Screens/addllisttasks.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -8,7 +9,9 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: (){
+          showModalBottomSheet(context: context, builder: (context)=>AddListTasks());
+        },
         backgroundColor: Colors.lightBlueAccent,
         child: Icon(Icons.add,
         color: Colors.white,
@@ -54,6 +57,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 50 , ),
               width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -61,6 +65,7 @@ class HomeScreen extends StatelessWidget {
                 topRight: Radius.circular(30.0),
               topLeft: Radius.circular(30.0))
             ),
+               child: Tasklistview(),
             ),
           ),
         ],
@@ -68,5 +73,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
 
