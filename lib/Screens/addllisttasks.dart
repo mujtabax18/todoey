@@ -1,74 +1,48 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import 'package:todoey/Styles/styles.dart';
+import 'package:todoey/Widgets/TextBottonRectangular.dart';
+import 'package:todoey/modules/taskData.dart';
 class AddListTasks extends StatelessWidget {
-
+  late  String tempData;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Color(0xff757575),
-      child: Container(
-        padding: EdgeInsets.all(30),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30.0),
-                topLeft: Radius.circular(30.0))
-
-        ),
-        child: Column(
-          children: [
-            Text(
-              'Add Task',
-              style: TextStyle(
-                color: Colors.lightBlueAccent,
-                fontSize: 30.0,
+    return Consumer<TaskData>(
+        builder: (_,TaskData,child){
+          return Container(
+            color:const Color(0xff757575),
+            child: Container(
+              padding:const EdgeInsets.all(30),
+              decoration: kAddListTaskBoxDecoration,
+              child: Column(
+                children: [
+                  const  Text(
+                    'Add Task',
+                    style: kAddListBoxHeaderTextStyle,
+                  ),
+                  TextField(
+                    autofocus: true,
+                    textAlign: TextAlign.center,
+                    onChanged: (value){
+                      tempData=value;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  TextButtonRectangular(
+                    onPress: (){
+                    TaskData.AddTask(tempData);
+                    Navigator.pop(context);
+                    },
+                    btnText: 'Add',
+                  )
+                ],
               ),
             ),
-            TextField(
-              autofocus: true,
-              textAlign: TextAlign.center,
-            ),
-           SizedBox(
-             height: 20.0,
-           ),
-         TextButton(
-             onPressed: (){},
-             child: Container(
-               alignment: Alignment.center,
-               height: 50.0,
-               width: double.infinity,
-               color: Colors.lightBlueAccent,
-               child: Text(
-                 'Add',
-                 style: TextStyle(
-                   fontSize: 20.0,
-                   color: Colors.white,
-                 ),
-                 textAlign: TextAlign.center,
-               ),
-             ))
-          ],
-        ),
-      ),
+          );
+        },
     );
   }
 }
-// TextButton(
-// onPressed: (){},
-//
-// child: Container(
-// width: double.infinity,
-// height: 50.0,
-// color: Colors.lightBlueAccent,
-// child: Center(
-// child: Text(
-// 'ADD',
-// style: TextStyle(
-// color: Colors.white,
-// fontSize: 30.0
-//
-// ),
-// ),
-// ),
-// ),
-// )
+
